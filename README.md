@@ -5,7 +5,7 @@
 ## How to run
 - Make sure to clone the project first.
 - After cloning, make sure to satisfy packages in requirements.txt. You can do that by running ```pip install -r requirements.txt"``` (the requirements files is stored in [Config] folder)
-- You can now run the project using ```python main.py```
+- You can now run the project using ```python app.py```
 
 
 ## Sample request
