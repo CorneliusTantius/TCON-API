@@ -26,7 +26,8 @@ def make_user_table():
     query = ('CREATE TABLE IF NOT EXISTS user ('+
         'ID TEXT PRIMARY KEY, '+
         'FirstName TEXT, LastName TEXT, Email TEXT, ' +
-        'PhoneNumber TEXT, Password TEXT)')
+        'PhoneNumber TEXT, Password TEXT, ' + 
+        'IsConsultant INTEGER, Url TEXT)')
     cursorObj.execute(query)
     con.commit()
     del con, cursorObj, query

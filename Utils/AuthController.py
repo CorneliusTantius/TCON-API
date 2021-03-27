@@ -31,16 +31,33 @@ def register_user(data):
     con = get_connection('Utils/DB/user.db')
     if con != None:
         cur = con.cursor()
-        query = f"SELECT ID FROM user WHERE Email = \'{data['email']}\';"
+        try:
+            em = data['email']
+        except:
+            return "Email Cannot Be Empty"
+        query = f"SELECT ID FROM user WHERE Email = \'{em}\';"
         cur.execute(query)
         if len(cur.fetchall()) != 0:
             return "Email Already Exists"
+        
+        try:
+            pn = data['phoneNumber']
+        except:
+            return "Phone Number Cannot Be Empty"
+        query = f'SELECT PhoneNumber FROM user WHERE PhoneNumber = \'{pn}\';'
+        if len(cur.fetchall()) != 0:
+            return "Phone Number Already Exists "
+
         new_id = str(uuid.uuid1())
-        entities = (new_id, data['firstName'],
-            data['lastName'], data['email'],
-            data['phoneNumber'], 
-            base64_encoding(data['password']))
-        query = "INSERT INTO user VALUES (?, ?, ?, ?, ?, ?)"
+        try:
+            entities = (new_id, data['firstName'],
+                data['lastName'], data['email'],
+                data['phoneNumber'], 
+                base64_encoding(data['password']),
+                0, "")
+        except:
+            return "Parameter / Payload Error"
+        query = "INSERT INTO user VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
         cur.execute(query, entities)
         con.commit()
         del data, con, cur, new_id, entities, query

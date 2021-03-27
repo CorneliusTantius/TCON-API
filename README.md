@@ -4,7 +4,7 @@
 
 ## How to run
 - Make sure to clone the project first.
-- After cloning, make sure to satisfy packages in requirements.txt. (you can do that by running ```pip install -r requirements.txt"```
+- After cloning, make sure to satisfy packages in requirements.txt. You can do that by running ```pip install -r requirements.txt"```
 - You can now run the project using ```python main.py```
 
 ## Sample request
@@ -13,4 +13,5 @@
 
 
 Copyright (C) 2021 Cornelius Tantius
+
 All Rights Reserved
