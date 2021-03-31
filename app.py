@@ -12,3 +12,8 @@ app.register_blueprint(dev_bp)
 @app.route('/')
 def index():
     return "<h1>TCon-API</h1>"
+
+if __name__ == "__main__":
+    os.system("pyclean .")
+    app.run(threaded=True, port=5000)
+    os.system("pyclean .")
