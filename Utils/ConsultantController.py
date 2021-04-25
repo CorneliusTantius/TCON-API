@@ -32,12 +32,14 @@ def getall_consultant():
     con = get_connection(user_db_path)
     if con != None:
         cur = con.cursor()
-        query = "SELECT FirstName, LastName, Email, PhoneNumber FROM user WHERE IsConsultant = 1"
+        query = "SELECT ID, FirstName, LastName, Email, PhoneNumber FROM user WHERE IsConsultant = 1"
         cur.execute(query)
         ret = []
         for i in cur.fetchall():
-            ret.append(i[0] + ' ' + i[1] + '|' + i[2] + '|' + i[3])
+            ret.append('ID:' + i[0] + '->' + i[1] + ' ' + i[2] + '|' + i[3] + '|' + i[4])
         del cur, con, query
         return ret
     else:
         return "Empty Connection"
+def get_consultant_details(data):
+    return

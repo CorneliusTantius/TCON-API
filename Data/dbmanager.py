@@ -42,9 +42,17 @@ def view_user_table():
         print(item)
     del con, cursorObj, query, data
 
+def make_consultant_details_table():
+    con = get_connection('consultant_details.db')
+    cursorObj = con.cursor()
+    query = " CREATE TABLE IF NOT EXISTS consultant_details (\
+        USERID TEXT PRIMARY KEY, Bio TEXT, Experience TEXT, \
+        Honor TEXT, Education TEXT, Rating FLOAT)"
+    cursorObj.execute(query)
+    con.commit()
+    del con, cursorObj, query
+
 if __name__ == '__main__':
     print("Database Manager")
     print("="*20)
     make_user_table()
-    view_user_table()
-    get_table_details('user.db')

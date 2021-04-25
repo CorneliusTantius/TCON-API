@@ -57,7 +57,7 @@ def login_user(data):
     con = get_connection(user_db_path)
     if con !=  None:
         cur = con.cursor()
-        query = f"SELECT Password FROM user WHERE Email = \'{data['email']}\';"
+        query = f"SELECT Password, IsConsultant FROM user WHERE Email = \'{data['email']}\';"
         cur.execute(query)
         res = cur.fetchall()
         if(len(res) == 0):
@@ -68,8 +68,8 @@ def login_user(data):
             db_pwd = decode(db_pwd)
             del con, cur, query, res
             if db_pwd == data['password']:
-                return "Done"
+                return "Done", res[0][1]
             else:
-                return "Wrong password"
+                return "Wrong password", res[0][1]
     else:
-        return "Empty connection"
+        return "Empty connection", 0

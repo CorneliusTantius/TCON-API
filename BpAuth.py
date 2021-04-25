@@ -11,13 +11,13 @@ def auth_login():
         data = request.get_json(silent=True)
     except:
         return jsonify(message = "Failed to Fetch JSON Payload", status=False)
-    ret = login_user(data)
+    ret, isConsultant = login_user(data)
     if(ret == "Done"):
         del ret, data
-        return jsonify(message = "User Logged In", status = True)
+        return jsonify(message = "User Logged In", status = True, IsConsultant=isConsultant)
     else:
         del data
-        return jsonify(message = ret, status = False)
+        return jsonify(message = ret, status = False, IsConsultant=isConsultant)
 
 @auth_bp.route("/auth/register", methods = ["POST"])
 def auth_register():
