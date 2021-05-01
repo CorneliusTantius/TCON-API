@@ -1,6 +1,6 @@
 import os
 from flask import request, jsonify, Blueprint
-from Utils.ConsultantController import register_consultant, getall_consultant
+from Utils.ConsultantController import register_consultant, getall_consultant, get_consultant_details
 
 consultant_bp = Blueprint('consultant_bp',__name__)
 
