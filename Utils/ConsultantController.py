@@ -37,7 +37,7 @@ def register_consultant(data):
         cur = con.cursor()
         query = "INSERT INTO consultant_details VALUES(?, ?, ?, ?, ?, ?)"
         entity = (userId, bio, exp, honor, education, rating)
-        cur.execute(query, entities)
+        cur.execute(query, entity)
         con.commit()
         return "Done"
     else:
