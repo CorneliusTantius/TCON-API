@@ -21,7 +21,7 @@ def consultant_getall():
     return jsonify(consultants = getall_consultant())
 
 @consultant_bp.route("/consultant/details", methods = ["GET"])
-def consultant_getall():
+def consultant_getdetails():
     try:
         data = request.get_json(silent=True)
     except:

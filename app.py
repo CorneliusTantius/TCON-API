@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from BpAuth import auth_bp
 from BpConsultant import consultant_bp
