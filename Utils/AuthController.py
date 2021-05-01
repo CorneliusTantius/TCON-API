@@ -1,7 +1,7 @@
 import uuid
 import sqlite3
 from sqlite3 import Error
-from Data.Hashing import encode, decode
+from Data.zHashing import encode, decode
 user_db_path = 'Data/user.db'
 
 def get_connection(db_name):
@@ -22,7 +22,7 @@ def register_user(data):
             em = data['email']
         except:
             return "Email Cannot Be Empty"
-        query = f"SELECT ID FROM user WHERE Email = \'{em}\';"
+        query = f"SELECT Email FROM user WHERE Email = \'{em}\';"
         cur.execute(query)
         if len(cur.fetchall()) != 0:
             return "Email Already Exists"

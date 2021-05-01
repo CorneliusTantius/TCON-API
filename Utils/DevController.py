@@ -19,7 +19,7 @@ def getuid_dev(data):
             e = data['email']
         except:
             return "Email not Supplied"
-        query = f"SELECT FirstName, LastName, Email, ID FROM user WHERE email = \'{e}\'"
+        query = f"SELECT FirstName, LastName, Email, UserId FROM user WHERE email = \'{e}\'"
         cur.execute(query)
         ret = []
         for i in cur.fetchall():
@@ -38,7 +38,7 @@ def deletebyuid_dev(data):
             e = data['uid']
         except:
             return "uid not Supplied"
-        query = f"DELETE FROM user WHERE ID = \'{e}\'"
+        query = f"DELETE FROM user WHERE UserId = \'{e}\'"
         cur.execute(query)
         con.commit()
         del cur, con, query

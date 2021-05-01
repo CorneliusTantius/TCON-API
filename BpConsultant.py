@@ -19,3 +19,11 @@ def consultant_register():
 @consultant_bp.route("/consultant/getall", methods = ["GET"])
 def consultant_getall():
     return jsonify(consultants = getall_consultant())
+
+@consultant_bp.route("/consultant/details", methods = ["GET"])
+def consultant_getall():
+    try:
+        data = request.get_json(silent=True)
+    except:
+        return jsonify(message = "Failed to Fetch JSON Payload", status = False)
+    return jsonif(details = get_consultant_details(data))
