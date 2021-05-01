@@ -26,4 +26,4 @@ def consultant_getdetails():
         data = request.get_json(silent=True)
     except:
         return jsonify(message = "Failed to Fetch JSON Payload", status = False)
-    return jsonif(details = get_consultant_details(data))
+    return jsonify(details = get_consultant_details(data))

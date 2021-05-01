@@ -66,7 +66,7 @@ def login_user(data):
         else:
             db_pwd = res[0][0]
             db_pwd = decode(db_pwd)
-            del con, cur, query, res
+            del con, cur, query
             if db_pwd == data['password']:
                 return "Done", res[0][1]
             else:

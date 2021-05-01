@@ -27,7 +27,7 @@ def register_consultant(data):
             return "Data is not well supllied"
         cur.execute(query, entities)
         con.commit()
-        query = 'SELECT UserId FROM user WHERE WHERE email = ? AND PhoneNumber = ? AND Password = ?'
+        query = 'SELECT UserId FROM user WHERE email = ? AND PhoneNumber = ? AND Password = ?'
         cur.execute(query, entities)
         userId = cur.fetchone()[0]
     else:
@@ -43,8 +43,6 @@ def register_consultant(data):
     else:
         return "Empty Connection"
     
-    
-
 def getall_consultant():
     # no data required
     con = get_connection(user_db_path)
