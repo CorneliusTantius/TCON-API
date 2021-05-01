@@ -64,8 +64,20 @@ def get_consultant_details(data):
     if con != None:
         cur = con.cursor()
         query = "SELECT * FROM consultant_details WHERE UserId = ?"
-        entity = (data['UserId'],)
+        try:
+            entity = (data['userId'],)
+        except:
+            return "Data is not well supplied"
         cur.execute(query, entity)
-        return cur.fetchone()
+        ret = cur.fetchone()
+        dictret = {
+            "userId":ret[0],
+            "bio":ret[1],
+            "experience":ret[2],
+            "honor":ret[3],
+            "education":ret[4],
+            "rating":ret[5]
+        }
+        return dictret
     else:
         return "Empty Connection"

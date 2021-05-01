@@ -62,7 +62,7 @@ def login_user(data):
         res = cur.fetchall()
         if(len(res) == 0):
             del con, cur, query, res
-            return "Email not exists"
+            return "Email not exists", 0
         else:
             db_pwd = res[0][0]
             db_pwd = decode(db_pwd)
