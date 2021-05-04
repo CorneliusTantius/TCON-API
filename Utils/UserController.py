@@ -21,16 +21,18 @@ def create_new_chat(data):
         except:
             return "data is not supplied", False
         cur = con2.cursor()
-        query_check = "select TOP 1 ChatId from chat_header where \
+        query_check = "select Chatid from chat_header where \
             (UserId1=? and UserId2=?) or (Userid1=? and UserId2=?)"
         entities = (sender, receiver, receiver, sender)
         cur.execute(query_check, entities)
-        if len(cur.fetchall()) > 0:
-            return cur.fetchall()[0]
+        data = cur.fetchall()
+        if len(data) > 0:
+            return data[0][0], True
         newid = str(uuid.uuid1())
         query = "insert into chat_header values(?, ?, ?)"
         entities = (newid, sender, receiver)
         cur.execute(query, entities)
+        con2.commit()
         return newid, True
     else:
         return "empty connection", False
@@ -56,15 +58,17 @@ def get_all_chat_header(data):
             else:
                 friendid = i[1]
             cur1 = con1.cursor()
-            query = "select top 1 FirstName, LastName from user\
+            query = "select FirstName, LastName from user\
                 where UserId = ?"
             entities = (friendid,)
             cur1.execute(query, entities)
-            friendname = cur1.fetchall()[0][0] + ' ' + cur1.fetchall()[0][1]
+            user_db_res = cur1.fetchall()
+            print(user_db_path)
+            friendname = user_db_res[0][0] + ' ' + user_db_res[0][1]
             temp = {
-                chatId : i[0],
-                friendId : friendid,
-                friendNamme : friendname
+                "chatId" : i[0],
+                "friendId" : friendid,
+                "friendNamme" : friendname
             }
             returnlist.append(temp)
         return returnlist, True

@@ -44,7 +44,7 @@ def make_chat_header_table():
     with get_connection('chat_header.db') as con:
         cur = con.cursor()
         query = "CREATE TABLE IF NOT EXISTS chat_header (\
-            ChatId TEXT PRIMARY KEY, UserId1 TEXT\
+            ChatId TEXT PRIMARY KEY, UserId1 TEXT,\
             UserId2 TEXT) " 
         cur.execute(query)
         con.commit()
@@ -61,11 +61,11 @@ def insert_dummies():
     with get_connection('user.db') as con:
         cur = con.cursor()
         query = "insert into user values(?,?,?,?,?,?,?,?)"
-        entities = ('admin','admin','','admin@gmail.com','081233445566','YWRtaW4=',1,'')
+        entities = ('3d9b3ea6-ac8f-11eb-9530-9557126e83fc','admin','','admin@gmail.com','081233445566','YWRtaW4=',1,'')
         cur.execute(query, entities)
 
         query = "insert into consultant_details values(?, ?, ?, ?, ?, ?)"
-        entities = ('admin', 'admin biography', 'admin experience', 'admin honor', 'admin education', 4.7)
+        entities = ('3d9b3ea6-ac8f-11eb-9530-9557126e83fc', 'admin biography', 'admin experience', 'admin honor', 'admin education', 4.7)
         con.commit()
 
 if __name__ == '__main__':

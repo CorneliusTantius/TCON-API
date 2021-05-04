@@ -12,7 +12,7 @@ def user_newchat():
         return jsonify(result = ret, status = status)
     except:
         return jsonify(result = "Failed to Fetch JSON Payload", status=False)
-    
+
 @user_bp.route("/user/getchatheader", methods = ["GET"])
 def user_getchatheader():
     try:
@@ -21,3 +21,5 @@ def user_getchatheader():
         return jsonify(result = ret, status = status)
     except:
         return jsonify(result = "Failed to Fetch JSON Payload", status = False)
+    
+    
