@@ -1,0 +1,23 @@
+import os
+from flask import request, jsonify, Blueprint
+from Utils.UserController import *
+
+user_bp = Blueprint('user_bp',__name__)
+
+@auth_bp.route("/user/newchat", methods = ["POST"])
+def user_newchat():
+    try:
+        data = request.get_json(silent=True)
+        ret,status = create_new_chat(data)
+        return jsonify(result = ret, status = status)
+    except:
+        return jsonify(result = "Failed to Fetch JSON Payload", status=False)
+    
+@auth_bp.route("/user/getchatheader", methods = ["GET"])
+def user_getchatheader():
+    try:
+        data = request.get_json(silent=True)
+        ret, status = get_all_chat_header(data)
+        return jsonify(result = ret, status = status)
+    except:
+        return jsonify(result = "Failed to Fetch JSON Payload", status = False)
