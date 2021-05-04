@@ -4,7 +4,7 @@ from Utils.UserController import *
 
 user_bp = Blueprint('user_bp',__name__)
 
-@auth_bp.route("/user/newchat", methods = ["POST"])
+@user_bp.route("/user/newchat", methods = ["POST"])
 def user_newchat():
     try:
         data = request.get_json(silent=True)
@@ -13,7 +13,7 @@ def user_newchat():
     except:
         return jsonify(result = "Failed to Fetch JSON Payload", status=False)
     
-@auth_bp.route("/user/getchatheader", methods = ["GET"])
+@user_bp.route("/user/getchatheader", methods = ["GET"])
 def user_getchatheader():
     try:
         data = request.get_json(silent=True)
