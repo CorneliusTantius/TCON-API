@@ -52,7 +52,13 @@ def getall_consultant():
         cur.execute(query)
         ret = []
         for i in cur.fetchall():
-            ret.append('ID:' + i[0] + '->' + i[1] + ' ' + i[2] + '|' + i[3] + '|' + i[4])
+            temp = {
+                "userId":i[0],
+                "name":i[1]+' '+i[2],
+                "email":i[3],
+                "phone":i[4]
+            }
+            ret.append(temp)
         del cur, con, query
         return ret
     else:
