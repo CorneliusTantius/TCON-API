@@ -55,6 +55,9 @@ def insert_dummies():
         query = "insert into user values(?,?,?,?,?,?,?,?)"
         entities = ('admin','admin','','admin@gmail.com','081233445566','YWRtaW4=',1,'')
         cur.execute(query, entities)
+
+        query = "insert into consultant_details values(?, ?, ?, ?, ?, ?)"
+        entities = ('admin', 'admin biography', 'admin experience', 'admin honor', 'admin education', 4.7)
         con.commit()
 
 if __name__ == '__main__':
