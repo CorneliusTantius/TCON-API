@@ -48,6 +48,14 @@ def make_chat_header_table():
             UserId2 TEXT) " 
         cur.execute(query)
         con.commit()
+    
+def make_chat_details_table():
+    with get_connection('chat_details.db') as con:
+        cur = con.cursor()
+        query = "create table if not exists chat_details(\
+            ChatId TEXT, SenderId TEXT, Message TEXT, TimeStamp TEXT)"
+        cur.execute(query)
+        con.commit()
 
 def insert_dummies():
     with get_connection('user.db') as con:
@@ -65,6 +73,9 @@ if __name__ == '__main__':
     print("="*20)
     make_user_table()
     make_consultant_details_table()
+
     make_chat_header_table()
-    # insert_dummies()
+    make_chat_details_table()
+
+    insert_dummies()
     view_user_table()
