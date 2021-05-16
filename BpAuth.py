@@ -10,14 +10,20 @@ def auth_login():
     try:
         data = request.get_json(silent=True)
     except:
-        return jsonify(message = "Failed to Fetch JSON Payload", status=False)
+        retval = jsonify(message = "Failed to Fetch JSON Payload", status=False)
+        retval.headers.add('Access-Control-Allow-Origin', '*')
+        return retval
     ret, isConsultant, uid = login_user(data)
     if(ret == "Done"):
         del ret, data
-        return jsonify(message = "User Logged In", status = True, userId = uid, isConsultant=isConsultant)
+        retval = jsonify(message = "User Logged In", status = True, userId = uid, isConsultant=isConsultant)
+        retval.headers.add('Access-Control-Allow-Origin', '*')
+        return retval
     else:
         del data
-        return jsonify(message = ret, status = False, userId = uid, isConsultant=isConsultant)
+        retval = jsonify(message = ret, status = False, userId = uid, isConsultant=isConsultant)
+        retval.headers.add('Access-Control-Allow-Origin', '*')
+        return retval
 
 @auth_bp.route("/auth/register", methods = ["POST"])
 def auth_register():
