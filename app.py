@@ -1,16 +1,20 @@
 import os
 from flask import Flask
+from flask_cors import CORS, cross_origin
 from BpAuth import auth_bp
 from BpConsultant import consultant_bp
 from BpDev import dev_bp
 from BpUser import user_bp
 
 app = Flask(__name__)
+cors = CORS(app)
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(consultant_bp)
 app.register_blueprint(dev_bp)
 app.register_blueprint(user_bp)
+
+app.config(['CORS_HEADERS']) = Content-Type
 
 @app.route('/')
 def index():
