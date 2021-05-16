@@ -14,7 +14,7 @@ app.register_blueprint(consultant_bp)
 app.register_blueprint(dev_bp)
 app.register_blueprint(user_bp)
 
-app.config(['CORS_HEADERS']) = Content-Type
+app.config(['CORS_HEADERS']) = "Content-Type"
 
 @app.route('/')
 def index():
