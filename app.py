@@ -8,13 +8,12 @@ from BpUser import user_bp
 
 app = Flask(__name__)
 cors = CORS(app)
-
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 app.register_blueprint(auth_bp)
 app.register_blueprint(consultant_bp)
 app.register_blueprint(dev_bp)
 app.register_blueprint(user_bp)
-app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/')
 def index():
