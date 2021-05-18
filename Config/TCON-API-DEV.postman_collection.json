@@ -23,12 +23,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/auth/login",
-					"protocol": "http",
+					"raw": "https://tcon-api.herokuapp.com/auth/login",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"tcon-api",
+						"herokuapp",
+						"com"
 					],
-					"port": "5000",
 					"path": [
 						"auth",
 						"login"
@@ -52,35 +53,16 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/auth/register",
-					"protocol": "http",
+					"raw": "https://tcon-api.herokuapp.com/auth/register",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"tcon-api",
+						"herokuapp",
+						"com"
 					],
-					"port": "5000",
 					"path": [
 						"auth",
 						"register"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "[Consultant] Get All",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:5000/consultant/getall",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"consultant",
-						"getall"
 					]
 				}
 			},
@@ -93,7 +75,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"email\" : \"admin@email.com\",\r\n    \"phoneNumber\" : \"081233445566\",\r\n    \"password\" : \"adminpwd\"\r\n}",
+					"raw": "{\r\n    \"email\" : \"admin@email.com\",\r\n    \"phoneNumber\" : \"081233445566\",\r\n    \"password\" : \"adminpwd\",\r\n    \"bio\" : \"admin account\",\r\n    \"experience\" : \"\",\r\n    \"honor\" : \"\",\r\n    \"education\" : \"\",\r\n    \"rating\" : 4.9\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -101,15 +83,196 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/consultant/register",
-					"protocol": "http",
+					"raw": "https://tcon-api.herokuapp.com/consultant/register",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"tcon-api",
+						"herokuapp",
+						"com"
 					],
-					"port": "5000",
 					"path": [
 						"consultant",
 						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Consultant] Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://tcon-api.herokuapp.com/consultant/getall",
+					"protocol": "https",
+					"host": [
+						"tcon-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"consultant",
+						"getall"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Consultant] Get Details",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"5c0cbb2e-b646-11eb-8568-76b53d83b595\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tcon-api.herokuapp.com/consultant/details",
+					"protocol": "https",
+					"host": [
+						"tcon-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"consultant",
+						"details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[User] Create new chat",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sender\":\"3d9b3ea6-ac8f-11eb-9530-9557126e83fc\",\n    \"receiver\":\"5c0cbb2e-b646-11eb-8568-76b53d83b595\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tcon-api.herokuapp.com/user/newchat",
+					"protocol": "https",
+					"host": [
+						"tcon-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user",
+						"newchat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[User] Send Chat ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":\"testing-userid2\",\r\n    \"chatId\":\"testing-chatid\",\r\n    \"message\":\"new test chat\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tcon-api.herokuapp.com/user/sendchat",
+					"protocol": "https",
+					"host": [
+						"tcon-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user",
+						"sendchat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[User] Get chat header",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\": \"3be3420c-b792-11eb-ac85-d4d252c529ec\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tcon-api.herokuapp.com/user/getchatheader",
+					"protocol": "https",
+					"host": [
+						"tcon-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user",
+						"getchatheader"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[User] Get chat details",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\":\"testing-userid\",\r\n    \"chatId\":\"testing-chatid\",\r\n    \"message\":\"hello test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://tcon-api.herokuapp.com/user/getchatdetails",
+					"protocol": "https",
+					"host": [
+						"tcon-api",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"user",
+						"getchatdetails"
 					]
 				}
 			},
@@ -121,12 +284,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:5000/dev/cleanup",
-					"protocol": "http",
+					"raw": "https://tcon-api.herokuapp.com/dev/cleanup",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"tcon-api",
+						"herokuapp",
+						"com"
 					],
-					"port": "5000",
 					"path": [
 						"dev",
 						"cleanup"
@@ -153,12 +317,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/dev/getuid",
-					"protocol": "http",
+					"raw": "https://tcon-api.herokuapp.com/dev/getuid",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"tcon-api",
+						"herokuapp",
+						"com"
 					],
-					"port": "5000",
 					"path": [
 						"dev",
 						"getuid"
@@ -182,12 +347,13 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/dev/deletebyuid",
-					"protocol": "http",
+					"raw": "https://tcon-api.herokuapp.com/dev/deletebyuid",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"tcon-api",
+						"herokuapp",
+						"com"
 					],
-					"port": "5000",
 					"path": [
 						"dev",
 						"deletebyuid"
