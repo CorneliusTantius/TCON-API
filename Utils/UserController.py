@@ -1,6 +1,8 @@
 import uuid
 import sqlite3
 from sqlite3 import Error
+import time
+from datetime import datetime
 user_db_path = 'Data/user.db'
 chat_header_db_path = 'Data/chat_header.db'
 chat_details_db_path = 'Data/chat_details.db'
@@ -72,5 +74,61 @@ def get_all_chat_header(data):
             }
             returnlist.append(temp)
         return returnlist, True
+    else:
+        return "empty connection", False
+    
+def sendchat(data):
+    try:
+        userid = data['userId']
+        chatid = data['chatId']
+        message = data['message']
+    except:
+        return "userId, chatId, or message not specified", False
+    con = get_connection(chat_details_db_path)
+    if con != None:
+        cur = con.cursor()
+        ts =  int(time.time())
+        query = "insert into chat_details values(?, ?, ?, ?)"
+        params = (chatid, userid, message, ts)
+        try:
+            cur.execute(query, params)
+            con.commit()
+        except:
+            return "failed to send chat", False
+        return "message sent", True
+    else:
+        return "empty connection", False
+
+def getchatdetails(data):
+    try:
+        chatid = data['chatId']
+        userid = data['userId']
+    except:
+        return "chatId or userId not specified", False
+    con = get_connection(chat_details_db_path)
+    if con != None:
+        cur = con.cursor()
+        ts =  int(time.time())
+        query = "select * from chat_details where ChatId = ? order by TimeStamp DESC"
+        params = (chatid,)
+        retlist = []
+        try:
+            cur.execute(query, params)
+            datalist = cur.fetchall()
+            for i in datalist:
+                sender = 0
+                if i[1] == userid:
+                    sender = 1
+                else:
+                    sender = 0
+                temp = {
+                    'message' : str(i[2]),
+                    "time" : str(datetime.fromtimestamp(int(i[3]))),
+                    "isSender" : sender
+                }
+                retlist.append(temp)
+        except:
+            return "failed to get chats", False
+        return retlist, True
     else:
         return "empty connection", False

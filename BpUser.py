@@ -21,5 +21,22 @@ def user_getchatheader():
         return jsonify(result = ret, status = status)
     except:
         return jsonify(result = "Failed to Fetch JSON Payload", status = False)
-    
-    
+
+
+@user_bp.route("/user/sendchat", methods = ["POST"])
+def user_sendchat():
+    try:
+        data = request.get_json(silent=True)
+        ret, status = sendchat(data)
+        return jsonify(result = ret, status = status)
+    except:
+        return jsonify(result = "Failed to Fetch JSON Payload", status = False)
+
+@user_bp.route("/user/getchatdetails", methods = ["GET"])
+def user_getchatdetails():
+    try:
+        data = request.get_json(silent=True)
+        ret, status = getchatdetails(data)
+        return jsonify(result = ret, status = status)
+    except:
+        return jsonify(result = "Failed to Fetch JSON Payload", status = False)
