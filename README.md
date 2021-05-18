@@ -12,6 +12,7 @@
 - Make sure you have postman in your local machine.
 - Open postman and import a collection.
 - The collection can be obtained from [Config] folder.
+- The base URL deployed in heroku: https://tcon-api.herokuapp.com/
 
 
 Copyright (C) 2021 Cornelius Tantius
