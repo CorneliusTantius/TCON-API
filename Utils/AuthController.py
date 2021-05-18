@@ -21,19 +21,19 @@ def register_user(data):
         try:
             em = data['email']
         except:
-            return "Email Cannot Be Empty"
+            return "Email Cannot Be Empty", False
         query = f"SELECT Email FROM user WHERE Email = \'{em}\';"
         cur.execute(query)
         if len(cur.fetchall()) != 0:
-            return "Email Already Exists"
+            return "Email Already Exists", False
         
         try:
             pn = data['phoneNumber']
         except:
-            return "Phone Number Cannot Be Empty"
+            return "Phone Number Cannot Be Empty", False
         query = f'SELECT PhoneNumber FROM user WHERE PhoneNumber = \'{pn}\';'
         if len(cur.fetchall()) != 0:
-            return "Phone Number Already Exists "
+            return "Phone Number Already Exists ", False
 
         new_id = str(uuid.uuid1())
         try:
@@ -43,14 +43,15 @@ def register_user(data):
                 encode(data['password']),
                 0, "")
         except:
-            return "Parameter / Payload Error"
+            return "Parameter / Payload Error", False
+
         query = "INSERT INTO user VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
         cur.execute(query, entities)
         con.commit()
         del data, con, cur, new_id, entities, query
-        return "Done"
+        return "Register Success", True
     else:
-        return "Empty Connection"
+        return "Empty Connection", False
 
 def login_user(data):
     # data required: email, password
@@ -62,14 +63,14 @@ def login_user(data):
         res = cur.fetchall()
         if(len(res) == 0):
             del con, cur, query, res
-            return "Email not exists", 0, "No Id"
+            return "Email not exists", 0, "No Id", False
         else:
             db_pwd = res[0][0]
             db_pwd = decode(db_pwd)
             del con, cur, query
             if db_pwd == data['password']:
-                return "Done", res[0][1], res[0][2]
+                return "Logged In", res[0][1], res[0][2], True
             else:
-                return "Wrong password", 0, "No Id"
+                return "Wrong password", 0, "No Id", False
     else:
-        return "Empty connection", 0, "No Id"
+        return "Empty connection", 0, "No Id", False
