@@ -6,7 +6,7 @@ from flask_cors import cross_origin
 
 auth_bp = Blueprint('auth_bp',__name__)
 
-@auth_bp.route("/auth/login", methods = ["GET"])
+@auth_bp.route("/auth/login", methods = ["POST"])
 @cross_origin()
 def auth_login():
     try:
