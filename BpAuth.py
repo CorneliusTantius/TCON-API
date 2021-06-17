@@ -1,5 +1,5 @@
 import os
-from flask import request, jsonify, Blueprint
+from flask import request, jsonify, Blueprint, Response
 from Utils.AuthController import register_user, login_user
 from Utils.ConsultantController import register_consultant
 from flask_cors import cross_origin
@@ -12,9 +12,13 @@ def auth_login():
     try:
         data = request.get_json(silent=True)
         ret, isConsultant, uid, stat = login_user(data)
-        return jsonify(message = ret, status = stat, userId = uid, isConsultant=isConsultant)
+        resp = Response(jsonify(message = ret, status = stat, userId = uid, isConsultant=isConsultant))
+        resp.headers['Access-Control-Allow-Credentials'] = '*'
+        return resp
     except:
-        return jsonify(message = "Failed to Fetch JSON Payload", status=False, userId = "", isConsultant = 0)
+        resp = Response(jsonify(message = "Failed to Fetch JSON Payload", status=False, userId = "", isConsultant = 0))
+        resp.headers['Access-Control-Allow-Credentials'] = '*'
+        return resp
 
 @auth_bp.route("/auth/register", methods = ["POST"])
 @cross_origin()
