@@ -11,7 +11,7 @@ def dev_cleanup():
     os.system("pyclean .")
     return jsonify(message = "pycache cleaned")
 
-@dev_bp.route("/dev/getuid", methods = ["GET"])
+@dev_bp.route("/dev/getuid", methods = ["POST"])
 @cross_origin()
 def dev_getuid():
     try:

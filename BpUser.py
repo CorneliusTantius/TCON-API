@@ -15,7 +15,7 @@ def user_newchat():
     except:
         return jsonify(result = "Failed to Fetch JSON Payload", status=False)
 
-@user_bp.route("/user/getchatheader", methods = ["GET"])
+@user_bp.route("/user/getchatheader", methods = ["POST"])
 @cross_origin()
 def user_getchatheader():
     try:
@@ -36,7 +36,7 @@ def user_sendchat():
     except:
         return jsonify(result = "Failed to Fetch JSON Payload", status = False)
 
-@user_bp.route("/user/getchatdetails", methods = ["GET"])
+@user_bp.route("/user/getchatdetails", methods = ["POST"])
 @cross_origin()
 def user_getchatdetails():
     try:

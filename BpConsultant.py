@@ -23,7 +23,7 @@ def consultant_register():
 def consultant_getall():
     return jsonify(consultants = getall_consultant())
 
-@consultant_bp.route("/consultant/details", methods = ["GET"])
+@consultant_bp.route("/consultant/details", methods = ["POST"])
 @cross_origin()
 def consultant_getdetails():
     try:

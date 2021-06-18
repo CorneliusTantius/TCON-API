@@ -1,3 +1,4 @@
+from os import truncate
 import uuid
 import sqlite3
 from sqlite3 import Error
@@ -58,19 +59,21 @@ def login_user(data):
     con = get_connection(user_db_path)
     if con !=  None:
         cur = con.cursor()
-        query = f"SELECT Password, IsConsultant, UserId FROM user WHERE Email = \'{data['email']}\';"
+        query = f"SELECT Password, IsConsultant, UserId, FirstName, LastName, Email, PhoneNumber FROM user WHERE Email = \'{data['email']}\';"
         cur.execute(query)
         res = cur.fetchall()
+        print(res)
         if(len(res) == 0):
             del con, cur, query, res
-            return "Email not exists", 0, "No Id", False
+            return "Email not exists", 0, "No Id", "No Name", data['email'], "No Number", False
         else:
             db_pwd = res[0][0]
             db_pwd = decode(db_pwd)
             del con, cur, query
             if db_pwd == data['password']:
-                return "Logged In", res[0][1], res[0][2], True
+                # return "Logged In", res[0][1], res[0][2], str(res[0][3], res[0][4]), res[0][5], res[0][6], True
+                return "Logged In", res[0], True
             else:
-                return "Wrong password", 0, "No Id", False
+                return "Wrong password", None, False
     else:
-        return "Empty connection", 0, "No Id", False
+        return "Empty connection", None, False

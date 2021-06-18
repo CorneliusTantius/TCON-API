@@ -11,10 +11,11 @@ auth_bp = Blueprint('auth_bp',__name__)
 def auth_login():
     try:
         data = request.get_json(silent=True)
-        ret, isConsultant, uid, stat = login_user(data)        
-        return jsonify(message = ret, status = stat, userId = uid, isConsultant=isConsultant)
+        ret, res, stat = login_user(data)        
+        return jsonify(message = ret, status = stat, 
+            userId =  res[1], name = str(res[3] +" "+ res[4]), email = res[5], phone = res[6], isConsultant=res[2])
     except:
-        return jsonify(message = "Failed to Fetch JSON Payload", status=False, userId = "", isConsultant = 0)
+        return jsonify(message = "Failed to Fetch JSON Payload", status=False, userId = "", name="", email="", phone="", isConsultant = 0)
 
 @auth_bp.route("/auth/register", methods = ["POST"])
 @cross_origin()
