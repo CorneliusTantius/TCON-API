@@ -13,7 +13,7 @@ def auth_login():
         data = request.get_json(silent=True)
         ret, res, stat = login_user(data)        
         return jsonify(message = ret, status = stat, 
-            userId =  res[1], name = str(res[3] +" "+ res[4]), email = res[5], phone = res[6], isConsultant=res[2])
+            userId =  res[2], name = str(res[3] +" "+ res[4]), email = res[5], phone = res[6], isConsultant=res[1])
     except:
         return jsonify(message = "Failed to Fetch JSON Payload", status=False, userId = "", name="", email="", phone="", isConsultant = 0)
 

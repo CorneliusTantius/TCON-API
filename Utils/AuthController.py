@@ -71,7 +71,6 @@ def login_user(data):
             db_pwd = decode(db_pwd)
             del con, cur, query
             if db_pwd == data['password']:
-                # return "Logged In", res[0][1], res[0][2], str(res[0][3], res[0][4]), res[0][5], res[0][6], True
                 return "Logged In", res[0], True
             else:
                 return "Wrong password", None, False
