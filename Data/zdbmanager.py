@@ -61,12 +61,34 @@ def insert_dummies():
     with get_connection('user.db') as con:
         cur = con.cursor()
         query = "insert into user values(?,?,?,?,?,?,?,?)"
-        entities = ('3d9b3ea6-ac8f-11eb-9530-9557126e83fc','admin','','admin@gmail.com','081233445566','YWRtaW4=',1,'')
+        entities = ('3d9b3ea6-ac8f-11eb-9530-9557126e83fc','admin','','admin@gmail.com','081233445566','YWRtaW4=',1,'') #adminpwd
         cur.execute(query, entities)
+        entities = ('c69f9186-d0fa-11eb-84c8-569e2975b3f6','Wiliam','Tannuwijaya','081233439566', 'william@gmail.com','d2lsbGlhbQ==', 1, '') #william
+        cur.execute(query, entities)
+        entities = ('f0eb5bce-d0f4-11eb-84c8-569e2975b3f6', 'Brian Karnadi', 'Japar','081233445216', 'brian@gmail.com', 'YnJpYW4=', 1, '') #brian
+        cur.execute(query, entities)
+        entities = ('f0eb543e-dbfs-1s2b-84cv-5fs32975b3f6', 'Cornelius', 'Tantius','081237285566', 'cornel@gmail.com', 'Y29ybmVs', 1, '') #cornel
+        cur.execute(query, entities)
+        entities = ('f0eb5fje-34ns-11sb-82cv-5fs32j34g3f6', 'Ricky', '','081247444362', 'ricky@gmail.com', 'cmlja3k=', 1, '') #ricky
+        cur.execute(query, entities)
+        con.commit()
+
     with get_connection('consultant_details.db') as con:
         cur = con.cursor()
         query = "insert into consultant_details values(?, ?, ?, ?, ?, ?)"
-        entities = ('3d9b3ea6-ac8f-11eb-9530-9557126e83fc', 'admin biography', 'admin experience', 'admin honor', 'admin education', 4.7)
+        bio = 'This is biography panel, this panel will describe this user\'s biography in short. Biography allows user to know deeper about this consultant and decide wether he is about to consult with this consultant or not.'
+        exp = 'This consultant will share his experience of work and everything he has done to make sure the user decide this is the correct consultant.'
+        honor = 'This will show the all the honor and achievement that current consultant has achieved.\n- Achievement 1,\n- Achievement 2\n- Honor 1'
+        edu = 'Education that current consultant has gone through:\n- Elementary school\n- High school\n- University 1\n- University 2'
+        entities = ('3d9b3ea6-ac8f-11eb-9530-9557126e83fc', bio, exp, honor, edu, 4.7)
+        cur.execute(query, entities)
+        entities = ('c69f9186-d0fa-11eb-84c8-569e2975b3f6', bio, exp, honor, edu, 4.7)
+        cur.execute(query, entities)
+        entities = ('f0eb5bce-d0f4-11eb-84c8-569e2975b3f6', bio, exp, honor, edu, 4.7)
+        cur.execute(query, entities)
+        entities = ('f0eb543e-dbfs-1s2b-84cv-5fs32975b3f6', bio, exp, honor, edu, 4.7)
+        cur.execute(query, entities)
+        entities = ('f0eb5fje-34ns-11sb-82cv-5fs32j34g3f6', bio, exp, honor, edu, 4.7)
         cur.execute(query, entities)
         con.commit()
 
