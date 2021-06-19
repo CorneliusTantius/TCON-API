@@ -7,11 +7,11 @@
 	"item": [
 		{
 			"name": "[Auth] Login",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -121,15 +121,12 @@
 		},
 		{
 			"name": "[Consultant] Get Details",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"userId\": \"5c0cbb2e-b646-11eb-8568-76b53d83b595\"\n}",
+					"raw": "{\n    \"userId\": \"3be3420c-b792-11eb-ac85-d4d252c529ec\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -214,11 +211,8 @@
 		},
 		{
 			"name": "[User] Get chat header",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -247,11 +241,8 @@
 		},
 		{
 			"name": "[User] Get chat details",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
@@ -301,11 +292,8 @@
 		},
 		{
 			"name": "[Dev] Get UID of A User",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
