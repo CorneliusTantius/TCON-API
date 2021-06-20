@@ -65,8 +65,10 @@ def get_all_chat_header(data):
             entities = (friendid,)
             cur1.execute(query, entities)
             user_db_res = cur1.fetchall()
-            print(user_db_path)
-            friendname = user_db_res[0][0] + ' ' + user_db_res[0][1]
+            # print(user_db_path)
+            friendname = "No Name"
+            if len(user_db_res) >= 1:
+                friendname = str(user_db_res[0][0]) + ' ' + str(user_db_res[0][1])
             temp = {
                 "chatId" : i[0],
                 "friendId" : friendid,

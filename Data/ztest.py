@@ -23,7 +23,21 @@ def decode(string):
     del base64_bytes, message_bytes
     return message
 
-while True:
-    s = input("string=> ")
-    print(encode(s))
-    print("-"*20)
+# while True:
+#     s = input("string=> ")
+#     print(encode(s))
+#     print("-"*20)
+
+
+import sqlite3
+from sqlite3 import Error
+
+def get_connection(db_name):
+	try:
+		con = sqlite3.connect(db_name)
+	except Error:
+		con = None
+		print(Error)
+	return con
+
+# with get_connection("user.db")
