@@ -1,6 +1,6 @@
 import os
 from flask import request, jsonify, Blueprint
-from Utils.UserController import *
+from Controller.UserController import *
 from flask_cors import cross_origin
 
 user_bp = Blueprint('user_bp',__name__)

@@ -1,7 +1,7 @@
 import os
 from flask import request, jsonify, Blueprint, Response
-from Utils.AuthController import register_user, login_user
-from Utils.ConsultantController import register_consultant
+from Controller.AuthController import register_user, login_user
+from Controller.ConsultantController import register_consultant
 from flask_cors import cross_origin
 
 auth_bp = Blueprint('auth_bp',__name__)
