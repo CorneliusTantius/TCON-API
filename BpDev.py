@@ -1,6 +1,6 @@
 import os
 from flask import jsonify, Blueprint,request
-from Controller.DevController import getuid_dev, deletebyuid_dev
+from Utils.DevController import getuid_dev, deletebyuid_dev
 from flask_cors import cross_origin
 
 dev_bp = Blueprint('dev_bp',__name__)

@@ -1,6 +1,6 @@
 import os
 from flask import request, jsonify, Blueprint
-from Controller.ConsultantController import register_consultant, getall_consultant, get_consultant_details
+from Utils.ConsultantController import register_consultant, getall_consultant, get_consultant_details
 from flask_cors import cross_origin
 
 consultant_bp = Blueprint('consultant_bp',__name__)
